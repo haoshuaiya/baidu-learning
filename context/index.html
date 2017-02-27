@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>右键事件</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        html,body{
+            width:100%;
+            height:100%;
+            margin:0;
+            padding:0;
+        }
+        .container{
+            width:100%;
+            height:100%;
+        }
+        .main{
+            position: absolute;
+            top:0;
+            left:0;
+            width:200px;
+            height:200px;
+            background:#f6f6f6;
+            text-align: center;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .main input{
+            width:140px;
+            height:30px;
+            line-height:30px;
+            border-radius: 4px;
+            border:1px solid #eee;
+            margin-top: 10px;
+            text-indent: .5em;
+        }
+        .main button{
+            width:140px;
+            margin-top: 10px;
+        }
+        .modal{
+            position: absolute;
+            width:200px;
+            height:100px;
+            background-color: #f6f6f6;
+            border-radius: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            <input type="text" placeholder="left set" id="left-set">
+            <input type="text" placeholder="top set" id="top-set">
+            <button type="button" id="change">postion change</button>
+            <p> contextmenu event in this block</p>
+        </div>
+        <div class="modal" id="modal">
+            <h3>modal</h3>
+            <p>sth show...</p>
+        </div>
+    </div>
+    <script>
+        document.querySelector('body').addEventListener('click',hideModal);
+        document.querySelector('body').addEventListener('contextmenu',hideModal);
+        document.querySelector('.main').addEventListener('contextmenu',function (e) {
+            var e =e || window.event;
+            e.preventDefault();
+            e.stopPropagation();
+            var modal =document.querySelector('#modal');
+            var thisX =e.clientX;
+            var thisY =e.clientY;
+            var xWidth=document.body.clientWidth;
+            var xHeight =document.body.clientHeight;
+            var oWidth=modal.offsetWidth;
+            var oHeight=modal.offsetHeight;
+            if (xWidth-thisX>oWidth){
+                modal.style.left=thisX+'px';
+            }else{
+                modal.style.left=thisX-oWidth+'px';
+            }
+            console.log(xHeight,thisY)
+            if(xHeight-thisY>oHeight){
+                modal.style.top=thisY+'px';
+            }else{
+                modal.style.top=thisY-oHeight+'px';
+            }
+            modal.style.display='block';
+            return false;
+        });
+        function hideModal(){
+            document.querySelector('#modal').style.display ='none';
+        }
+
+        document.querySelector('#change').addEventListener('click',function (e) {
+            var oLeft =document.querySelector('#left-set').value;
+            var oTop =document.querySelector('#top-set').value;
+            var ele =document.querySelector('.main');
+            if (oLeft && oTop){
+                ele.style.left=oLeft+'px';
+                ele.style.top=oTop+'px';
+            }
+        });
+    </script>
+</body>
+</html>
