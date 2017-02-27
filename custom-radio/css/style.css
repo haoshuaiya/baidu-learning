@@ -1,0 +1,86 @@
+*{
+    margin:0;
+    padding:0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html,body{
+    width:100%;
+    height:100%;
+}
+.container{
+    width:100%;
+    height:100%;
+    padding:200px 0;
+    text-align: center;
+}
+.ele,.ele-01{
+    position: relative;
+}
+.ele label,.ele-01 label{
+    cursor: pointer;
+}
+.ele input,.ele-01 input{
+    position: absolute;
+    clip:rect(0 0 0 0);
+    clip:rect(0,0,0,0);
+}
+.ele input[type="checkbox"] + label::before{
+    content: '\a0';
+    display: inline-block;
+    vertical-align: .2em;
+    width: .8em;
+    height:.8em;
+    margin-right: .2em;
+    border-radius: 1px;
+    background-color: transparent;
+    /*text-indent: .15em;*/
+    line-height:.65;
+    border:1px solid #eee;
+}
+.ele input:checked + label::before{
+    color: red;
+    border-color: red;
+}
+.ele input[type="checkbox"]:checked + label::before{
+    content: '\2714';
+}
+.ele input[type="radio"] + label::before{
+    content: '\a0';
+    display: inline-block;
+    vertical-align: .2em;
+    width: .8em;
+    height:.8em;
+    margin-right: .2em;
+    border-radius: 50%;
+    background-color: transparent;
+    /*text-indent: .08em;*/
+    line-height:.65;
+    border:1px solid #eee;
+}
+.ele input[type="radio"]:checked + label::before{
+    content:'●';
+    border-color: red;
+}
+.ele-01 input + label::before{
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 16px;
+    height:16px;
+    margin-right: .2em;
+    border-radius: 1px;
+}
+.ele-01 input[type="checkbox"]+label::before{
+    background: url("../images/sprite.png") -1px -23px no-repeat;
+}
+.ele-01 input[type="checkbox"]:checked+ label::before{
+    background: url("../images/sprite.png") -36px -22px no-repeat;
+}
+.ele-01 input[type="radio"]+label::before{
+    background: url("../images/sprite.png") 0 0 no-repeat;
+}
+.ele-01 input[type="radio"]:checked+label::before{
+    background: url("../images/sprite.png") -35px 0 no-repeat;
+}
