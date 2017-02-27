@@ -1,0 +1,19 @@
+{
+  "name": "baidu-learning",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haoshuaiya/baidu-learning.git"
+  },
+  "author": "leo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haoshuaiya/baidu-learning/issues"
+  },
+  "homepage": "https://github.com/haoshuaiya/baidu-learning#readme"
+}
